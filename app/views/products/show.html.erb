@@ -1,7 +1,7 @@
 <% provide(:title, @product.title) %>
 
 <div class="row thumbnail margin-clear">
-    <h2 class="text-center"><%= @product.title %> <span class="badge">Артикул: <%= @product.id %></span> <span class="badge">Цена: <%= @product.price %> руб.</span></h2>
+    <h2 class="text-center"><%= @product.title %> <span class="badge">Артикул: <%= @product.id %></span> <span class="badge">Цена: <%= sprintf("%0.02f руб.", @product.price) %></span></h2>
     <div class="col-xs-4 col-xs-offset-4"><%= image_tag(@product.image.medium.url, class: "img-responsive") if @product.image? %></div>
     <div class="col-xs-12"><%= sanitize(@product.description)  %></div>
     <div class="col-xs-12">
