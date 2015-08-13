@@ -36,10 +36,14 @@
     <%= f.text_field :subprice %>
   </div>
 
+  <div class="field">
+    <%= image_tag(@product.image.small.url) if @product.image? %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
-  <%= image_tag(@product.image_url) if @product.image? %>
-  <%= f.file_field :image %>
-  <%= f.hidden_field :image_cache %>
+
 <% end %>
