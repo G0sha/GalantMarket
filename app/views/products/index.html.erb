@@ -21,7 +21,8 @@
         <td><%= product.title %></td>
         <td><%= product.group %></td>
         <td><%= product.subgroup %></td>
-        <td><%= product.description %></td>
+        <td><%= image_tag(product.image_url) %>
+            <%= product.description %></td>
         <td><%= product.price %></td>
         <td><%= product.subprice %></td>
         <td><%= link_to 'Show', product %></td>
