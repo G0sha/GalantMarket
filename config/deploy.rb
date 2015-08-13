@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'GalantMarket'
+set :application, 'galantmarket'
 set :repo_url, 'git@github.com:G0sha/GalantMarket.git'
 
 # Default branch is :master
