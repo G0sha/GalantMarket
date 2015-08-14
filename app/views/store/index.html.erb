@@ -1,0 +1,18 @@
+<% provide(:title, 'Каталог') %>
+
+<br><br>
+<% @products.each do |product| %>
+<div class="row thumbnail margin-clear">
+  <div class="col-xs-4"><%= image_tag(product.image.medium.url, class: "img-responsive") if product.image? %></div>
+  <div class="col-xs-8 caption">
+    <h2><%= product.title %> <span class="badge"><%= sprintf("%0.02f руб.", product.price) %></span></h2>
+    <p><%= strip_tags(product.description).truncate(200) %></p>
+    <p>
+      <!--<%= link_to 'Подробнее', product, class: "btn btn-default" %>
+      <%= link_to 'Редактировать', edit_product_path(product), class: "btn btn-success" %></td>
+      <%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger" %> -->
+      <%= button_to 'В корзину', line_items_path(product_id: product), class: "btn btn-success" %>
+    </p>
+  </div>
+</div>
+<% end %>
