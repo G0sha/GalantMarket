@@ -27,10 +27,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
-  gem 'capistrano'
-  gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'capistrano-rbenv', github: "capistrano/rbenv"
 end
 
 # Use ActiveModel has_secure_password
