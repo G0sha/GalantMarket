@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'store#index'
-
+  root 'store#index', as: 'store'
   get 'store/index'
 
   resources :line_items
