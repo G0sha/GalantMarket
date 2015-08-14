@@ -10,7 +10,8 @@
       <!--<%= link_to 'Подробнее', product, class: "btn btn-default" %>
       <%= link_to 'Редактировать', edit_product_path(product), class: "btn btn-success" %></td>
       <%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger" %> -->
-      <%= button_to 'В корзину', line_items_path(product_id: product), class: "btn btn-success" %>
+      <%= button_to 'В корзину', line_items_path(product_id: product),
+        remote: true, class: "btn btn-success" %>
     </p>
   </div>
 </div>
