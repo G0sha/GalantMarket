@@ -9,4 +9,12 @@ module ApplicationHelper
       "#{page_title} | #{base_title}"                 # Интерполяция строки
     end
   end
+
+  def hidden_div_if(condition, attributes = {}, &block)
+    attributes["class"] = "list-group-item"
+    if condition
+      attributes["style"] = "display: none"
+    end
+    content_tag("div", attributes, &block)
+  end
 end
