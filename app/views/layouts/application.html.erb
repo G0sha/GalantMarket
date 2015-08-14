@@ -23,21 +23,21 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img class="img-responsive" alt="First slide" src="http://www.ulimex.cz/images/slide2.png">
+          <img class="img-responsive" alt="First slide" src="<%= root_path %>img/slider/slider-1.jpg">
           <div class="carousel-caption">
             <h3>Видеонаблюдение — установка и продажа оборудования</h3>
             <p>Компания Галан, Ваш надежный проводник в мир систем безопасности, видеонаблюдения и контроля доступа. Наша компания открыта для любого сотрудничества. Видеоспецмонтаж это надежность и профессионализм.</p>
           </div>
         </div>
         <div class="item">
-          <img class="img-responsive" alt="First slide" src="http://lumex.in.ua/wp-content/uploads/2014/12/ukraine.jpg">
+          <img class="img-responsive" alt="First slide" src="<%= root_path %>img/slider/slider-2.png">
           <div class="carousel-caption">
             <h3>Мы помогаем нашим клиентам решать самые сложные задачи..</h3>
             <p>Подбираем оборудование для видеонаблюдения с оптимальным соотношением цена-качество, особенно это стало актуально в сегодняшнее кризисное время, когда задачи связанные с безопасностью усложняются, а бюджет достаточно ограничен</p>
           </div>
         </div>
         <div class="item">
-          <img class="img-responsive" alt="First slide" src="http://el-roi.com.ua/public/images/slider/1.jpg">
+          <img class="img-responsive" alt="First slide" src="<%= root_path %>img/slider/slider-3.jpg">
           <div class="carousel-caption">
             <h3>Видеонаблюдение — это глаза системы безопасности.  </h3>
             <p>В современном мире, системы безопасности прочно заняли своё место.Видеонаблюдение позволяет оперативно оценивать ситуацию будь то школа, музей, ресторан, кафе или автостоянки, предприятия, подъезды жилых домов, коттеджных посёлков. Так же видеонаблюдение устанавливают в автомобилях с целью разрешить спорные ситуации на дороге либо на автостоянке.</p>
@@ -57,12 +57,12 @@
     </div>
     <!-- End Slider -->
       <div class="row content">
-        <div class="col-xs-3 sidebar-offcanvas"s role="navigation">
+        <div class="col-xs-4 sidebar-offcanvas"s role="navigation">
          <%= render 'layouts/sidebar' %>
         </div>
-        <div class="col-xs-9">
+        <div class="col-xs-8">
         <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
+          <div id="notice" class="alert alert-<%= key %>"><%= value %></div>
         <% end %>
           <%= yield %>
         </div>

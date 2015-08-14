@@ -2,8 +2,8 @@
   <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
     <%= render @cart %>
   <% end %>
+  <br>
 <% end %>
-<br>
 <div id="sidebar">
   <ul class   ="nav nav-pills nav-stacked">
     <li role    ="presentation" class="dropdown">
