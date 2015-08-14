@@ -1,6 +1,5 @@
 <% provide(:title, 'Каталог') %>
 
-<br><br>
 <% @products.each do |product| %>
 <div class="row thumbnail margin-clear">
   <div class="col-xs-4"><%= image_tag(product.image.medium.url, class: "img-responsive") if product.image? %></div>
