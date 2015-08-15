@@ -16,19 +16,18 @@
     <li><%= link_to "Контакты", "#" , title: 'Контакты' %></li>
     <li><%= link_to "О нас",    "#" , title: 'О нас' %></li>
   </ul>
+
   <div class="collapse navbar-collapse">
-    <div class="navbar-right">
-        <%= form_for(:session, :html => {class: 'form-inline', role: "form"}, url: "#") do |f| %>
-          <div class="form-group">
-            <%= f.label :email, class: 'sr-only' %>
-            <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :password, class: 'sr-only' %>
-            <%= f.password_field :password, placeholder: 'Пароль', class: 'form-control' %>
-          </div>
-          <%= f.button "Войти", class: "btn btn-default" %>
-      <% end %>
-    </div>
+  <ul class="nav navbar-nav navbar-right">
+  <% if session[:user_id] %>
+    <li><%= link_to "Заказы",  orders_path, title: 'Заказы' %></li>
+    <li><%= link_to "Продукция",  products_path, title: 'Продукция' %></li>
+    <li><%= link_to "Пользователи",  users_path, title: 'Пользователи' %></li>
+    <li><%= link_to 'Выход', logout_path, method: :delete, class: "btn btn-xs" %></li>
+  <% else %>
+    <li><%= link_to 'Вход', login_path, class: "btn btn-xs" %></li>
+  <% end %>
+  </ul>
+
   </div>
 </div>

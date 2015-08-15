@@ -1,4 +1,6 @@
 class PageMessegsController < ApplicationController
+  skip_before_action :authorize, only: [:show, :index ]
+
   before_action :set_page_messeg, only: [:show, :edit, :update, :destroy]
 
   # GET /page_messegs

@@ -1,7 +1,22 @@
 Rails.application.routes.draw do
+  root 'page_messegs#index'
+
+  get 'admin' => 'admin#index'
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+ # get 'sessions/create'
+ # get 'sessions/destroy'
+
+  resources :users
   resources :page_messegs
   resources :orders
-  root 'page_messegs#index'
+  resources :line_items
+  resources :carts
+  resources :products
 
   get 'store/index', as: 'store'
 
@@ -9,9 +24,7 @@ Rails.application.routes.draw do
     get :who_bought, on: :member
   end
 
-  resources :line_items
-  resources :carts
-  resources :products
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

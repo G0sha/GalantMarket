@@ -210,6 +210,10 @@ input {
   @extend .has-error;
 }
 
+#notice.alert-alert {
+  @extend .alert-danger;
+}
+
 .alert-error {
   @extend .alert-danger;
 }
@@ -238,3 +242,15 @@ input {
   }
 }
 
+.field {
+  @extend .form-group;
+}
+
+.field input {
+  @extend .form-control;
+}
+
+.field_with_errors {
+  @extend .form-group;
+  @extend .has-error;
+}
