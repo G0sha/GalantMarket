@@ -1,0 +1,2 @@
+module PageMessegsHelper
+end

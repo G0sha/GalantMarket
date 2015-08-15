@@ -1,0 +1,30 @@
+<%= form_for(@page_messeg) do |f| %>
+  <% if @page_messeg.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page_messeg.errors.count, "error") %> prohibited this page_messeg from being saved:</h2>
+
+      <ul>
+      <% @page_messeg.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= image_tag(@page_messeg.cover.small.url) if @page_messeg.cover? %>
+    <%= f.file_field :cover %>
+    <%= f.hidden_field :cover_cache %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

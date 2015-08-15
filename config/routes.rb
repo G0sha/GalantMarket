@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :page_messegs
   resources :orders
-  root 'store#index'
-  root 'store#index', as: 'store'
-  get 'store/index'
+  root 'page_messegs#index'
+
+  get 'store/index', as: 'store'
 
   resources :products do
     get :who_bought, on: :member

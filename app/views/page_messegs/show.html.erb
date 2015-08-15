@@ -1,0 +1,11 @@
+<% provide(:title, @page_messeg.title) %>
+
+<div class="row thumbnail margin-clear">
+    <h2 class="text-center"><%= @page_messeg.title %></h2>
+    <div class="col-xs-8 col-xs-offset-2"><%= image_tag(@page_messeg.cover.url, class: "img-responsive") if @page_messeg.cover? %></div>
+    <div class="col-xs-12"><%= sanitize(@page_messeg.description)  %></div>
+    <div class="col-xs-12">
+      <%= link_to "Назад", "#", onclick: "history.back()", class: "btn btn-warning" %>
+        <%= link_to 'Редактировать', edit_page_messeg_path(@page_messeg), class: "btn btn-success" %></td>
+        <%= link_to 'Удалить', page_messeg_path, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger" %>
+  </div>
