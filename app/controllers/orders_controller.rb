@@ -1,12 +1,14 @@
 class OrdersController < ApplicationController
+  skip_before_action :authorize, only: [:new, :create, :update, :destroy]
   include CurrentCart
-  before_action :set_cart, only: [:new, :create]
+
+  before_action :set_cart#, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.order(created_at: :desc)
   end
 
   # GET /orders/1
