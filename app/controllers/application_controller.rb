@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   include GroupsHelper
   include SubgroupsHelper
+  include ProductsHelper
 
   protected
     def authorize

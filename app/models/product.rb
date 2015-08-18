@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   validates :price, :subprice, :group_id, :subgroup_id, numericality: {greater_than_or_equal_to: 0.01}
 
   belongs_to :group
+  belongs_to :subgroup
   has_many :line_items
   has_many :orders, through: :line_items
 

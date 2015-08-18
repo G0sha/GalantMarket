@@ -13,16 +13,6 @@ class StoreController < ApplicationController
       if params[:g] == nil and params[:sg] != nil
     @products = current_products_in_group_and_subgroup(params[:g],params[:sg]) \
       if params[:g] != nil and params[:sg] != nil
-
   end
 
-  private
-
-  def current_products_in_group_and_subgroup(g,sg)
-    subgroup = current_products_in_subgroup (sg)
-    group = []
-    subgroup.each do |s|
-      group += s if s.group_id == g
-    end
-  end
 end

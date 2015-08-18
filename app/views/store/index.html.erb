@@ -4,7 +4,10 @@
 <div class="row thumbnail margin-clear">
   <div class="col-xs-4"><%= image_tag(product.image.medium.url, class: "img-responsive") if product.image? %></div>
   <div class="col-xs-8 caption">
-    <h2><%= product.title %> <span class="badge"><%= sprintf("%0.02f руб.", product.price) %></span></h2>
+    <h2><%= product.title %>
+    <span class="badge"><%= product.group_id %></span>
+    <span class="badge"><%= product.subgroup_id  %></span>
+    <span class="badge"><%= sprintf("%0.02f руб.", product.price) %></span></h2>
     <p><%= strip_tags(product.description).truncate(200) %></p>
     <p>
       <!--<%= link_to 'Подробнее', product, class: "btn btn-default" %>

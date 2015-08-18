@@ -1,21 +1,16 @@
 module GroupsHelper
-  def group_title(id)
+  def group_title(id) # возвращает название Группы по ее ID
     g = Group.find(id)
     g.title
   end
 
-  def current_gropus
+  def current_gropus # возвращает массив всех Групп
     @current_gropus = Group.all
   end
 
-  def current_gropus_select
+  def current_gropus_select # создает список Групп для select_tag
     current = []
     Group.all.order(:title).each {|g| current += [[g.title,g.id]]}
     current
-  end
-
-  def current_products_in_group(g)
-    group = Group.find(g)
-    group.products.order(:title)
   end
 end

@@ -32,7 +32,7 @@
     <%= f.label "Подкатегория" %><br>
     <% if @product.subgroup_id? %>
     <%= f.select(:subgroup_id,
-      options_for_select([[group_title(@product.subgroup_id),@product.subgroup_id]] + current_gropus_select)) %>
+      options_for_select([[subgroup_title(@product.subgroup_id),@product.subgroup_id]] + current_subgropus_select)) %>
     <% else %>
     <%= f.select(:subgroup_id,
       options_for_select([['---------------','0']] + current_subgropus_select)) %>
