@@ -1,15 +1,18 @@
 <%= form_for(@page_messeg) do |f| %>
-  <% if @page_messeg.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@page_messeg.errors.count, "error") %> prohibited this page_messeg from being saved:</h2>
-
-      <ul>
-      <% @page_messeg.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+<% if @page_messeg.errors.any? %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      The form contains <%= pluralize(@page_messeg.errors.count, "error") %>.
+    </div>
+    <div class="panel-body" >
+      <ul class="list-unstyled">
+        <% @page_messeg.errors.full_messages.each do |msg| %>
+          <li class="text-danger"><%= msg %></li>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+  </div>
+<% end %>
 
   <div class="field">
     <%= f.label :title %><br>

@@ -246,11 +246,23 @@ input {
   @extend .form-group;
 }
 
-.field input {
+.field input, .field select, textarea {
   @extend .form-control;
 }
 
-.field_with_errors {
+
+
+.field_with_errors input, textarea {
   @extend .form-group;
   @extend .has-error;
+}
+
+.actions input{
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+.error_explanation {
+  @extend .panel;
+  @extend .panel-default;
 }

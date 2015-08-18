@@ -11,12 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150815201813) do
+ActiveRecord::Schema.define(version: 20150817222536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,14 +76,22 @@ ActiveRecord::Schema.define(version: 20150815201813) do
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
-    t.integer  "group"
-    t.integer  "subgroup"
     t.text     "description"
     t.decimal  "price"
     t.decimal  "subprice"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "image"
+    t.integer  "group_id"
+    t.integer  "subgroup_id"
+  end
+
+  add_index "products", ["group_id", "subgroup_id", "created_at"], name: "index_products_on_group_id_and_subgroup_id_and_created_at", using: :btree
+
+  create_table "subgroups", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

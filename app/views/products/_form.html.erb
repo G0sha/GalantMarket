@@ -1,49 +1,65 @@
 <%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-      <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+<% if @product.errors.any? %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      The form contains <%= pluralize(@product.errors.count, "error") %>.
+    </div>
+    <div class="panel-body" >
+      <ul class="list-unstyled">
+        <% @product.errors.full_messages.each do |msg| %>
+          <li class="text-danger"><%= msg %></li>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+  </div>
+<% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label "Название товара" %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :group %><br>
-    <%= f.number_field :group %>
+    <%= f.label "Категория" %><br>
+    <% if @product.group_id? %>
+    <%= f.select(:group_id,
+      options_for_select([[group_title(@product.group_id),@product.group_id]] + current_gropus_select)) %>
+    <% else %>
+    <%= f.select(:group_id,
+      options_for_select([['---------------','0']] + current_gropus_select)) %>
+    <% end %>
   </div>
   <div class="field">
-    <%= f.label :subgroup %><br>
-    <%= f.number_field :subgroup %>
+    <%= f.label "Подкатегория" %><br>
+    <% if @product.subgroup_id? %>
+    <%= f.select(:subgroup_id,
+      options_for_select([[group_title(@product.subgroup_id),@product.subgroup_id]] + current_gropus_select)) %>
+    <% else %>
+    <%= f.select(:subgroup_id,
+      options_for_select([['---------------','0']] + current_subgropus_select)) %>
+    <% end %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label "Описание товара" %><br>
     <%= f.text_area :description, rows: 15 %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label "Розничная цена" %><br>
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :subprice %><br>
+    <%= f.label "Оптовая Цена" %><br>
     <%= f.text_field :subprice %>
   </div>
 
   <div class="field">
+    <%= f.label "Изображение товара" %><br>
     <%= image_tag(@product.image.small.url) if @product.image? %>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Добавить товар" %>
   </div>
 
 <% end %>

@@ -1,15 +1,18 @@
 <%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
-      <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+<% if @order.errors.any? %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      The form contains <%= pluralize(@order.errors.count, "error") %>.
+    </div>
+    <div class="panel-body" >
+      <ul class="list-unstyled">
+        <% @order.errors.full_messages.each do |msg| %>
+          <li class="text-danger"><%= msg %></li>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+  </div>
+<% end %>
 
   <div class="field">
     <%= f.label :name %><br>

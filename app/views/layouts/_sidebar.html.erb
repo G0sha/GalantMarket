@@ -6,27 +6,16 @@
 <% end %>
 <div id="sidebar">
   <ul class   ="nav nav-pills nav-stacked">
+  <% current_gropus.each do |g| %>
     <li role    ="presentation" class="dropdown">
-      <a class    ="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">IP-камеры видеонаблюдения<span class="caret"></span>
+      <a class    ="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= g.title %><span class="caret"></span>
       <ul class   ="dropdown-menu">
-        <li><%= link_to "В стандартном исполнении (без объектива) ", "#" %></a></li>
-        <li><%= link_to "Купольные", "#" %></li>
-        <li><%= link_to "Антивандальные ", "#" %></li>
-        <li><%= link_to "Уличные", "#" %></li>
-        <li><%= link_to "Скоростные купольные (уличное исполнение)", "#" %></li>
-        <li><%= link_to "Фиксированные малогабаритные", "#"%></li>
-        <li><%= link_to "Дополнительные аксессуары", "#" %></li>
-        <li><%= link_to "Все", "#" %></li>
+        <% current_subgropus.each do |sg| %>
+          <li><%= link_to sg.title, store_path(:g => g.id, :sg => sg.id) %></a></li>
+        <% end %>
+        <li><%= link_to "Все", store_path(:g => g.id) %></li>
       </ul>
     </li>
-    <li role    ="presentation" class="dropdown">
-      <a class    ="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">IP-видеорегистраторы<span class="caret"></span>
-      <ul class   ="dropdown-menu">
-        <li><%= link_to "До 4-х видео потоков", "#" %></li>
-        <li><%= link_to "До 8-х видео потоков", "#" %></li>
-        <li><%= link_to "До 16-х видео потоков", "#" %></li>
-        <li><%= link_to "Все", "#" %></li>
-      </ul>
-    </li>
+  <% end %>
   </ul>
 </div>

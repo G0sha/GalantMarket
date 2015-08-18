@@ -1,15 +1,18 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> сведения об этом пользователе не могут быть сохранены:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+<% if @user.errors.any? %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      The form contains <%= pluralize(@user.errors.count, "error") %>.
+    </div>
+    <div class="panel-body" >
+      <ul class="list-unstyled">
+        <% @user.errors.full_messages.each do |msg| %>
+          <li class="text-danger"><%= msg %></li>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+  </div>
+<% end %>
 
   <div class="well">
     <h4>Введите сведения о пользователе</h4>

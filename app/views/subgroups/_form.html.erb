@@ -1,12 +1,12 @@
-<%= form_for(@cart) do |f| %>
-<% if @cart.errors.any? %>
+<%= form_for(@subgroup) do |f| %>
+<% if @subgroup.errors.any? %>
   <div class="panel panel-danger">
     <div class="panel-heading">
-      The form contains <%= pluralize(@cart.errors.count, "error") %>.
+      The form contains <%= pluralize(@subgroup.errors.count, "error") %>.
     </div>
     <div class="panel-body" >
       <ul class="list-unstyled">
-        <% @cart.errors.full_messages.each do |msg| %>
+        <% @subgroup.errors.full_messages.each do |msg| %>
           <li class="text-danger"><%= msg %></li>
         <% end %>
       </ul>
@@ -14,6 +14,10 @@
   </div>
 <% end %>
 
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

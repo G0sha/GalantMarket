@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :subgroups
+  resources :groups
   root 'page_messegs#index'
 
   get 'admin' => 'admin#index'
