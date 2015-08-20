@@ -5,13 +5,14 @@ class StoreController < ApplicationController
   before_action :set_cart
 
   def index
-    @products = Product.order(:title) \
+    per_page = 5
+    @products = Product.all.order(:title).paginate(page: params[:page], per_page: per_page) \
       if params[:g] == nil and params[:sg] == nil
-    @products = current_products_in_group(params[:g]) \
+    @products = current_products_in_group(params[:g]).order('created_at DESC').paginate(page: params[:page], per_page: per_page) \
       if params[:g] != nil and params[:sg] == nil
-    @products = current_products_in_subgroup(params[:sg]) \
+    @products = current_products_in_subgroup(params[:sg]).order('created_at DESC').paginate(page: params[:page], per_page: per_page) \
       if params[:g] == nil and params[:sg] != nil
-    @products = current_products_in_group_and_subgroup(params[:g],params[:sg]) \
+    @products = current_products_in_group_and_subgroup(params[:g],params[:sg]).order('created_at DESC').paginate(page: params[:page], per_page: per_page) \
       if params[:g] != nil and params[:sg] != nil
   end
 
