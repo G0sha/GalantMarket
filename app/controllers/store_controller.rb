@@ -16,4 +16,7 @@ class StoreController < ApplicationController
       if params[:g] != nil and params[:sg] != nil
   end
 
+  def show
+    @product = Product.find(params[:id])
+  end
 end

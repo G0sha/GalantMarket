@@ -11,7 +11,7 @@
 <div class="navbar navbar-inverse navbar-inverse-custom container">
   <ul class="nav navbar-nav">
     <li><%= link_to "Главная",  root_path, title: 'Главная' %></li>
-    <li><%= link_to "Каталог",  store_path, title: 'Каталог' %></li>
+    <li><%= link_to "Каталог",  store_index_path, title: 'Каталог' %></li>
     <li><%= link_to "Услуги",   "#" , title: 'Услуги' %></li>
     <li><%= link_to "Контакты", "#" , title: 'Контакты' %></li>
     <li><%= link_to "О нас",    "#" , title: 'О нас' %></li>
@@ -28,6 +28,7 @@
       <ul class="dropdown-menu">
         <li><%= link_to "Заказы",  orders_path, title: 'Заказы' %></li>
         <li><%= link_to "Пользователи", users_path, title: 'Пользователи' %></li>
+        <li><%= link_to "Новости", new_page_messeg_path, title: 'Новости' %></li>
         <li class="divider"></li>
         <li><%= link_to "Продукция",  products_path, title: 'Продукция' %></li>
         <li><%= link_to "Категории товаров",   groups_path, title: 'Категории товаров' %></li>

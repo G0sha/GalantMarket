@@ -2,18 +2,18 @@
   <%= form_tag do %>
     <fieldset>
       <legend>Зарегистрируйтесь, пожалуйста</legend>
-      <div>
+      <div class="field">
         <%= label_tag :name, 'Имя:' %>
         <%= text_field_tag :name, params[:name] %>
       </div>
 
-      <div>
+      <div class="field">
         <%= label_tag :password, 'Пароль:' %>
         <%= password_field_tag :password, params[:password] %>
       </div>
 
-      <div>
-        <%= submit_tag "Login" %>
+      <div class="btn-medium">
+        <%= submit_tag "Login", class: "btn btn-primary" %>
       </div>
     </fieldset>
   <% end %>

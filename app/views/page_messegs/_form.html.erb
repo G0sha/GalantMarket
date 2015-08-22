@@ -15,19 +15,20 @@
 <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label "Заголовок" %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label "Содержание" %><br>
+    <%= f.text_area :description, rows: 15 %>
   </div>
   <div class="field">
+    <%= f.label "Изображение" %><br>
     <%= image_tag(@page_messeg.cover.small.url) if @page_messeg.cover? %>
     <%= f.file_field :cover %>
     <%= f.hidden_field :cover_cache %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Добавить новость" %>
   </div>
 <% end %>

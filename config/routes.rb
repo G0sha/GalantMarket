@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   resources :line_items
   resources :carts
   resources :products
+  resources :store
 
-  get 'store/index', as: 'store'
+  get 'store', to:  'store#index'
 
   resources :products do
     get :who_bought, on: :member

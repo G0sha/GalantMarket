@@ -1,7 +1,6 @@
 <% if @cart %>
   <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
     <%= render @cart %>
-  <br>
   <% end %>
 <% end %>
 <div id="sidebar">
@@ -11,9 +10,9 @@
       <a class    ="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= g.title %><span class="caret"></span>
       <ul class   ="dropdown-menu">
         <% current_subgropus.each do |sg| %>
-          <li><%= link_to sg.title, store_path(:g => g.id, :sg => sg.id) %></a></li>
+          <li><%= link_to sg.title, store_index_path(:g => g.id, :sg => sg.id) %></a></li>
         <% end %>
-        <li><%= link_to "Все", store_path(:g => g.id) %></li>
+        <li><%= link_to "Все", store_index_path(:g => g.id) %></li>
       </ul>
     </li>
   <% end %>
