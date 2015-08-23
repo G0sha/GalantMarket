@@ -1,14 +1,8 @@
 class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
-
-  VALID_PHONE_REGEX = /\A(8)+(9)+\d{9}\z/i
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   PAYMENT_TYPES = [ "Наличными", "Банковской картой", "Выбрать позже" ]
-
-  validates :name, :address, presence: true
-  validates :phone, presence: true, format: { with: VALID_PHONE_REGEX }
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
-  validates :pay_type, inclusion: PAYMENT_TYPES, presence: true
+  validates :name, :address, :phone, :email, presence: true
+  validates :pay_type, inclusion: PAYMENT_TYPES
 
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|
