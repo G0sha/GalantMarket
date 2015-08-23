@@ -15,27 +15,27 @@
 <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label "Ваше имя" %><br>
     <%= f.text_field :name, size: 40 %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
+    <%= f.label "Адрес" %><br>
     <%= f.text_area :address, rows: 3, cols: 40 %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone, size: 40 %>
+    <%= f.label "Телефон" %><br>
+    <%= f.text_field :phone, placeholder: "Вида: 89876543210", size: 40 %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email, size: 40 %>
+    <%= f.text_field :email, placeholder: "example@example.ru", size: 40 %>
   </div>
   <div class="field">
-    <%= f.label :pay_type %><br>
+    <%= f.label "Способ оплаты" %><br>
     <%= f.select :pay_type, Order::PAYMENT_TYPES,
       prompt: 'Выберите метод оплаты' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Отправить заказ" %>
   </div>
 <% end %>
