@@ -10,9 +10,9 @@
       <a class    ="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= g.title %><span class="caret"></span>
       <ul class   ="dropdown-menu">
         <% current_subgropus.each do |sg| %>
-          <% if !(sg.products.where(group_id: g).count == 0) %>
+          <%# if !(sg.products.where(group_id: g).count == 0) %>
             <li><%= link_to sg.title, store_index_path(:g => g.id, :sg => sg.id) %></a></li>
-          <% end %>
+          <%# end %>
         <% end %>
         <li><%= link_to "Все", store_index_path(:g => g.id) %></li>
       </ul>
