@@ -2,7 +2,7 @@
 
 <div class="row">
   <% @page_messegs.each do |page_messeg| %>
-  <div class="col-xs-6">
+  <div class="col-xs-12 col-md-6">
     <div class="thumbnail margin-clear">
       <%= image_tag(page_messeg.cover.medium.url, class: "img-rounded") if page_messeg.cover? %>
       <div class="caption">
