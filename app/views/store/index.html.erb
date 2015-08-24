@@ -8,7 +8,7 @@
   <div class="col-xs-8 caption">
     <h2>
       <%= product.title %><br>
-      <span class="badge"><%= sprintf("%0.02f руб.", product.price) %></span>
+      <span class="badge"><%= number_to_currency(product.price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></span>
     </h2>
     <p><%= strip_tags(product.description).truncate(200) %></p>
     <p>
