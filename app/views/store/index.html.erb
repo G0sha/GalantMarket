@@ -1,20 +1,19 @@
 <% provide(:title, 'Каталог') %>
 
-<%= will_paginate @products, class: "pagginate-top", previous_label: "Назад", next_label: "Вперед" %>
+<%= will_paginate @products, class: "pagginate-top", previous_label: "Назад", next_label: "Вперед", inner_window: @inner_window, outer_window: @outer_window %>
 
 <% @products.each do |product| %>
 <div class="row thumbnail margin-clear">
-  <div class="col-xs-4"><%= image_tag(product.image.medium.url, class: "img-responsive") if product.image? %></div>
-  <div class="col-xs-8 caption">
+  <div class="media-left media-middle media-float">
+    <%= image_tag(product.image.medium.url, class: "img-responsive") if product.image? %>
+  </div>
+  <div class="media-body">
     <h2>
       <%= product.title %><br>
       <span class="badge"><%= number_to_currency(product.price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></span>
     </h2>
     <p><%= strip_tags(product.description).truncate(200) %></p>
     <p>
-      <!--<%= link_to 'Подробнее', product, class: "btn btn-default" %>
-      <%= link_to 'Редактировать', edit_product_path(product), class: "btn btn-success" %></td>
-      <%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger" %> -->
       <%= button_to 'В корзину', line_items_path(product_id: product),
         remote: true, class: "btn btn-success" %>
       <%= link_to 'Подробнее', store_path(product.id) , class: "btn btn-default" %>
@@ -22,6 +21,5 @@
   </div>
 </div>
 <% end %>
-<%= will_paginate @products, class: "pagginate-bottom", previous_label: "Назад", next_label: "Вперед" %>
+<%= will_paginate @products, class: "pagginate-top", previous_label: "Назад", next_label: "Вперед", inner_window: @inner_window, outer_window: @outer_window %>
 <div class="pagginate-bottom"><%= page_entries_info @products %></div>
-<% #end %>

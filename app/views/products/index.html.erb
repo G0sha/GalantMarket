@@ -5,9 +5,14 @@
 <br><br>
 <% @products.each do |product| %>
 <div class="row thumbnail margin-clear">
-  <div class="col-xs-4"><%= image_tag(product.image.medium.url, class: "img-responsive") if product.image? %></div>
-  <div class="col-xs-8 caption">
-    <h2><%= product.title %> <span class="badge"><%= number_to_currency(product.subprice, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2)) %></span></h2>
+  <div class="media-left media-middle media-float">
+    <%= image_tag(product.image.medium.url, class: "img-responsive") if product.image? %>
+  </div>
+  <div class="media-body">
+    <h2>
+      <%= product.title %><br>
+      <span class="badge"><%= number_to_currency(product.price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></span>
+    </h2>
     <p><%= strip_tags(product.description).truncate(200) %></p>
     <p>
     <%= link_to 'Подробнее', product, class: "btn btn-default" %>
@@ -17,4 +22,4 @@
   </div>
 </div>
 <% end %>
-<div style="text-align: center"><%= will_paginate @products, previous_label: "Назад", next_label: "Вперед" %></div>
+<%= will_paginate @products, class: "pagginate-top", previous_label: "Назад", next_label: "Вперед", inner_window: @inner_window, outer_window: @outer_window %>

@@ -54,6 +54,10 @@
   padding: 0px;
 }
 
+.caption {
+  padding: 9px 20px !important;
+}
+
 .caption-news {
   margin: 0px 4px;
 }

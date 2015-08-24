@@ -267,3 +267,9 @@ input {
 #cart{
   margin-bottom: 20px;
 }
+
+
+.media-float {
+  @extend .col-xs-4;
+  float: none;
+}
