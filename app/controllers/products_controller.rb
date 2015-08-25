@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    per_page = 1
-    @inner_window = 2
+    per_page = 5
+    @inner_window = 1
     @outer_window = 1
     @products = Product.order('created_at DESC').paginate(page: params[:page], per_page: per_page)
   end
