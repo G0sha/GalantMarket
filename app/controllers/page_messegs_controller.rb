@@ -7,6 +7,11 @@ class PageMessegsController < ApplicationController
   # GET /page_messegs.json
   def index
     @page_messegs = PageMesseg.order(created_at: :desc)
+    if @page_messegs.count % 2 == 0
+      @page_count = 1
+    else
+      @page_count = 0
+    end
   end
 
   # GET /page_messegs/1

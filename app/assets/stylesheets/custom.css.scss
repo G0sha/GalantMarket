@@ -273,3 +273,13 @@ input {
   @extend .col-xs-4;
   float: none;
 }
+
+.panel-heading-c{
+  @extend .panel-heading;
+  padding-bottom: 20px;
+}
+
+.navbar-right-c {
+  @extend .navbar-right;
+  margin-right: 0px;
+}
