@@ -2,7 +2,7 @@
 
 <div class="row">
   <% @page_messegs.each do |page_messeg| %>
-  <div class="col-xs-12 col-md-6">
+  <div class="col-sm-12 col-md-6">
     <div class="thumbnail">
       <%= image_tag(page_messeg.cover.medium.url, class: "img-responsive") if page_messeg.cover? %>
       <div class="caption caption-news">
@@ -13,7 +13,7 @@
     </div>
   </div>
   <% if page_messeg.id % 2 == @page_count  %>
-  <div style="clear: left;"></div>
+  <div class="clear"></div>
   <% end %>
   <% end %>
 </div>

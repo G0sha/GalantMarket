@@ -1,11 +1,16 @@
-<h2>Корзина</h2>
-<table class="table table-hover">
-  <%= render(cart.line_items) %>
+<div class="panel-heading">Корзина</div>
 
-  <tr class="total_line">
-    <td colspan="2">Сумма</td>
-    <td class="total_cell"><%= number_to_currency(cart.total_price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></td>
-  </tr>
-</table>
-<%= button_to "Оформить заказ", new_order_path, method: :get, class: "button btn-sm btn-success" %>
-<%= button_to 'Очистить корзину', cart, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger" %>
+  <table class="table table-hover">
+    <%= render(cart.line_items) %>
+
+    <tr class="total_line">
+      <td colspan="2">Сумма</td>
+      <td class="total_cell"><%= number_to_currency(cart.total_price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></td>
+    </tr>
+  </table>
+  <div class="panel-footer">
+  <ul class="list-inline">
+    <li><%= button_to "Оформить", new_order_path, method: :get, class: "btn btn-success" %></li>
+    <li><%= button_to 'Очистить', cart, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></li>
+  </ul>
+</div>

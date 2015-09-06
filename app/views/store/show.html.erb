@@ -1,17 +1,22 @@
 <% provide(:title, @product.title) %>
 
-<div class="row thumbnail margin-clear">
+<div class="row thumbnail">
+  <div class="page-header">
     <h2 class="text-center">
-      <%= @product.title %><br>
-      <span class="badge">Артикул: <%= @product.id %></span><br>
-      <span class="badge">Розничная цена: <%= number_to_currency(@product.price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></span>
-      <span class="badge">Оптовая цена: <%= number_to_currency(@product.subprice, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></span>
+      <small><%= @product.id.to_s + '#' %></small> <%= @product.title %><br>
     </h2>
-    <%= image_tag(@product.image.medium.url, class: "img-responsive") if @product.image? %>
-    <div class="caption"><%= sanitize(@product.description)  %></div>
-    <div class="caption">
-      <%= button_to 'В корзину', line_items_path(product_id: @product),
-        remote: true, class: "btn btn-success" %>
-      <%= link_to "Назад", "#", onclick: "history.back()", class: "btn btn-warning" %>
+  </div>
+  <div class="text-center">
+    <span class="badge">Розничная цена: <%= number_to_currency(@product.price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></span>
+      <span class="badge">Оптовая цена: <%= number_to_currency(@product.subprice, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></span>
+  </div>
+  <%= image_tag(@product.image.medium.url, class: "img-responsive") if @product.image? %>
+  <div class="caption"><%= sanitize(@product.description)  %></div>
+  <div class="caption">
+    <ul class="list-inline">
+      <li><%= button_to 'В корзину', line_items_path(product_id: @product),
+        remote: true, class: "btn btn-success" %></li>
+      <li><%= link_to "Назад", store_index_path, class: "btn btn-warning" %></li>
+    </ul>
   </div>
 </div>

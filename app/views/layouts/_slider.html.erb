@@ -1,0 +1,58 @@
+<!-- Slider -->
+<div class="container container-slider">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <div class="carousel-content">
+          <%= image_tag root_url + 'img/slider/slider-1.jpg', class: 'img-responsive' %>
+          <div class="carousel-text">
+            <h3>Видеонаблюдение — установка и продажа оборудования.</h3>
+            <p>
+              Компания Галан, Ваш надежный проводник в мир систем безопасности, видеонаблюдения и контроля доступа. Наша компания открыта для любого сотрудничества. Видеоспецмонтаж это надежность и профессионализм.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="carousel-content">
+          <%= image_tag root_url + 'img/slider/slider-2.png', class: 'img-responsive' %>
+          <div class="carousel-text">
+            <h3>Мы помогаем нашим клиентам решать самые сложные задачи.</h3>
+            <p>
+              Подбираем оборудование для видеонаблюдения с оптимальным соотношением цена-качество, особенно это стало актуально в сегодняшнее кризисное время, когда задачи связанные с безопасностью усложняются, а бюджет достаточно ограничен
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="carousel-content">
+          <%= image_tag root_url + 'img/slider/slider-3.jpg', class: 'img-responsive' %>
+          <div class="carousel-text">
+            <h3>Видеонаблюдение — это глаза системы безопасности.</h3>
+            <p>
+              В современном мире, системы безопасности прочно заняли своё место.Видеонаблюдение позволяет оперативно оценивать ситуацию будь то школа, музей, ресторан, кафе или автостоянки, предприятия, подъезды жилых домов, коттеджных посёлков. Так же видеонаблюдение устанавливают в автомобилях с целью разрешить спорные ситуации на дороге либо на автостоянке.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Controls -->
+    <a class="left-control carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right-control carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+<!-- End Slider -->

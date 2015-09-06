@@ -1,25 +1,37 @@
 <% provide(:title, 'Каталог') %>
 
-<%= will_paginate @products, class: "pagginate-top", previous_label: "Назад", next_label: "Вперед", inner_window: @inner_window, outer_window: @outer_window %>
-
-<% @products.each do |product| %>
-<div class="row thumbnail margin-clear">
-  <div class="media-left media-middle media-float">
-    <%= image_tag(product.image.medium.url, class: "img-responsive") if product.image? %>
-  </div>
-  <div class="media-body">
-    <h2>
-      <%= product.title %><br>
-      <span class="badge"><%= number_to_currency(product.price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></span>
-    </h2>
-    <p><%= strip_tags(product.description).truncate(200) %></p>
-    <p>
-      <%= button_to 'В корзину', line_items_path(product_id: product),
-        remote: true, class: "btn btn-success" %>
-      <%= link_to 'Подробнее', store_path(product.id) , class: "btn btn-default" %>
-    </p>
+<div class="row">
+  <div class="col-xs-12">
+    <ol class="breadcrumb">
+      <%= content_tag(:li, link_to("Каталог",  store_index_path)) %>
+      <%= content_tag(:li, link_to(group_title(params[:g]), store_index_path(:g => params[:g]))) if !(params[:g] == nil) %>
+      <%= content_tag(:li, subgroup_title(params[:sg]), class: "active") if !(params[:sg] == nil) %>
+    </ol>
   </div>
 </div>
-<% end %>
-<%= will_paginate @products, class: "pagginate-top", previous_label: "Назад", next_label: "Вперед", inner_window: @inner_window, outer_window: @outer_window %>
+
+<div class="row">
+  <% i = 0 %>
+  <% @products.each do |product| %>
+  <% i+= 1 %>
+  <div class="col-xs-6 col-md-4">
+    <div class="thumbnail thumbnail-store">
+      <%= link_to image_tag(product.image.medium.url, class: "store-img"), store_path(product.id) if product.image? %>
+      <div class="caption">
+        <h4><%= link_to product.title, store_path(product.id) %></h4>
+        <h4 class="pull-left text-success"><%= number_to_currency(product.price, :unit => "", :delimiter => " ", :format => "%n %u", :precision => 0) %> <span class="glyphicon glyphicon-ruble"></span></h4>
+          <%= button_to line_items_path(product_id: product),
+        remote: true, class: "pull-right btn btn-success" do %>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+          <% end %>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <%= content_tag(:div, '', class: "clear visible-xs visible-sm") if i % 2 == 0 %>
+  <%= content_tag(:div, '', class: "clear visible-md visible-lg") if i % 3 == 0 %>
+  <% end %>
+</div>
+
+<%= will_paginate @products, class: "pagginate-top", previous_label: "<<", next_label: ">>", inner_window: @inner_window, outer_window: @outer_window %>
 <div class="pagginate-bottom"><%= page_entries_info @products %></div>
