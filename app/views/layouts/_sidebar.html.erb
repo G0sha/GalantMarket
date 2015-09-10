@@ -1,5 +1,5 @@
 <% if @cart %>
-  <%= hidden_div_if(@cart.line_items.empty?, id: 'cart', class: 'panel panel-default') do %>
+  <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
     <%= render @cart %>
   <% end %>
 <% end %>
@@ -12,7 +12,7 @@
       <ul class="dropdown-menu nav nav-pills nav-stacked">
         <% current_subgropus.each do |sg| %>
           <% if !(sg.products.where(group_id: g).count == 0) %>
-            <li role="presentation"><%= link_to sg.title, store_index_path(:g => g.id, :sg => sg.id) %></a></li>
+            <li role="presentation"><%= link_to sg.title, store_index_path(:g => g.id, :sg => sg.id) %></li>
           <% end %>
         <% end %>
         <li><%= link_to "Все", store_index_path(:g => g.id) %></li>

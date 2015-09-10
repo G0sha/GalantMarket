@@ -5,7 +5,7 @@ class StoreController < ApplicationController
   before_action :set_cart
 
   def index
-    per_page = 6
+    per_page = 9
     @inner_window = 1
     @outer_window = 1
     @products = Product.all.order(:title).paginate(page: params[:page], per_page: per_page) \

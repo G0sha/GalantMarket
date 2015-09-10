@@ -84,21 +84,26 @@ body{
     margin-left: -45%;
 }
 
-.carousel-control {
-  background-color: #000;
-  top: 83%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 3%;
-}
+.carousel-control-c {
+    position: absolute;
+    bottom: 0px;
+    width: 25px;
+    height: 25px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    background-color: #000;
+ }
 
 .left-control {
-  left: 94%;
+  right: 25px;
 }
 
 .right-control {
-   left: 97%;
+   right: 0px;
 }
 
 .item .col-xs-4{
@@ -334,23 +339,6 @@ body{
     margin-left: -45%;
 }
 
-.carousel-control {
-  background-color: #000;
-  top: 83%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 3%;
-}
-
-.left-control {
-  left: 94%;
-}
-
-.right-control {
-   left: 97%;
-}
-
 .item .col-xs-4{
   padding-bottom: 100%;
   padding: 0px 20px;
@@ -547,6 +535,12 @@ a {
   @extend .form-group;
   @extend .has-error;
   margin-bottom: 0px;
+}
+
+#cart{
+  @extend .panel;
+  @extend .panel-default;
+  padding: 0px;
 }
 
 .clear{
