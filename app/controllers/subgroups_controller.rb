@@ -4,7 +4,10 @@ class SubgroupsController < ApplicationController
   # GET /subgroups
   # GET /subgroups.json
   def index
-    @subgroups = Subgroup.all
+    per_page = 10
+    @inner_window = 1
+    @outer_window = 1
+    @subgroups = Subgroup.all.paginate(page: params[:page], per_page: per_page)
   end
 
   # GET /subgroups/1

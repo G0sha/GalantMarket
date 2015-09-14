@@ -4,7 +4,10 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    per_page = 10
+    @inner_window = 1
+    @outer_window = 1
+    @groups = Group.all.paginate(page: params[:page], per_page: per_page)
   end
 
   # GET /groups/1

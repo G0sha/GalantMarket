@@ -1,27 +1,31 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, 'Группы') %>
 
-<h1>Listing Groups</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
+<div class="panel panel-default">
+  <div class="panel-heading">Список групп товаров
+    <div class="navbar-right-c">
+      <%= link_to 'Добавить группу', new_group_path, class: "btn btn-primary" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= group.title %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th width="5%">#</th>
+        <th width="94%">Группа</th>
+        <th width="1%">Действие</th>
       </tr>
-    <% end %>
+    </thead>
+    <tbody>
+<% @groups.each do |group| %>
+    <tr>
+      <td><%= group.id %></td>
+      <td><%= link_to group.title, group, title: "Просмотреть" %><br><br></td>
+      <td>
+        <%= link_to '', edit_group_path(group), class: "glyphicon glyphicon-pencil", title: "Редактировать" %> <%= link_to '', group, method: :delete, data: { confirm: 'Вы уверены?' }, class: "glyphicon glyphicon-trash", title: "Удалить" %>
+      </td>
+    </tr>
+<% end %>
   </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Group', new_group_path %>
+  </table>
+</div>
+<%= will_paginate @groups, class: "pagginate-top", previous_label: "Назад", next_label: "Вперед", inner_window: @inner_window, outer_window: @outer_window %>
