@@ -17,4 +17,8 @@ module ApplicationHelper
     end
     content_tag("div", attributes, &block)
   end
+
+  def form_user_text(str)
+    sanitize(str.gsub("\r\n", "<br>"), tags: %w(br))
+  end
 end

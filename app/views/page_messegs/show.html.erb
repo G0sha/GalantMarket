@@ -3,7 +3,7 @@
 <div class="row thumbnail margin-clear">
     <h2 class="text-center"><%= @page_messeg.title %></h2>
     <%= image_tag(@page_messeg.cover.medium.url, class: "img-responsive") if @page_messeg.cover? %>
-    <div class="caption"><%= sanitize(@page_messeg.description)  %></div>
+    <div class="caption"><%= form_user_text(@page_messeg.description)  %></div>
     <div class="caption">
       <%= link_to "Назад", "#", onclick: "history.back()", class: "btn btn-warning" %>
       <%= link_to 'Редактировать', edit_page_messeg_path(@page_messeg), class: "btn btn-success" %>

@@ -1,9 +1,9 @@
 class Product < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   validates :title, uniqueness: true
-  validates :title, :group_id, :subgroup_id, :description, :price, :subprice,
+  validates :title, :group_id, :subgroup_id, :description, :price,
     presence: true
-  validates :price, :subprice, :group_id, :subgroup_id, numericality: {greater_than_or_equal_to: 0.01}
+  validates :price, :group_id, :subgroup_id, numericality: {greater_than_or_equal_to: 0.01}
 
   belongs_to :group
   belongs_to :subgroup

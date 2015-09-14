@@ -1,4 +1,4 @@
-<% provide(:title, 'Группы') %>
+<% provide(:title, 'Каталог') %>
 
 <div class="panel panel-default">
   <div class="panel-heading">Каталог товаров
@@ -11,9 +11,9 @@
     <thead>
       <tr>
         <th width="5%">#</th>
-        <th width="20%">Товар</th>
-        <th width="45%">Описание</th>
-        <th width="23%">Цена</th>
+        <th width="23%">Товар</th>
+        <th width="53%">Описание</th>
+        <th width="12%">Цена</th>
         <th width="1%">Действие</th>
       </tr>
     </thead>
@@ -23,8 +23,8 @@
       <td><%= product.id %></td>
       <td><%= link_to product.title, product, title: "Просмотреть" %><br><br></td>
       <td><%= strip_tags(product.description).truncate(100) %></td>
-      <td>Розничная: <%= number_to_currency(product.price, :unit => "", :delimiter => " ", :format => "%n %u", :precision => 2) %>
-      <br>Оптовая: <%= number_to_currency(product.subprice, :unit => "", :delimiter => " ", :format => "%n %u", :precision => 2) %></td>
+      <td><%= number_to_currency(product.price, :unit => "", :delimiter => " ", :format => "%n %u", :precision => 2) %>
+      </td>
       <td>
         <%= link_to '', edit_product_path(product), class: "glyphicon glyphicon-pencil", title: "Редактировать" %> <%= link_to '', product, method: :delete, data: { confirm: 'Вы уверены?' }, class: "glyphicon glyphicon-trash", title: "Удалить" %>
       </td>

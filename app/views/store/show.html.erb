@@ -7,11 +7,10 @@
     </h2>
   </div>
   <div class="text-center">
-    <span class="badge">Розничная цена: <%= number_to_currency(@product.price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></span>
-      <span class="badge">Оптовая цена: <%= number_to_currency(@product.subprice, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></span>
+    <span class="badge">Цена: <%= number_to_currency(@product.price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></span>
   </div>
   <%= image_tag(@product.image.medium.url, class: "img-responsive") if @product.image? %>
-  <div class="caption"><%= sanitize(@product.description)  %></div>
+  <div class="caption"><%= form_user_text(@product.description)  %></div>
   <div class="caption">
     <ul class="list-inline">
       <li><%= button_to 'В корзину', line_items_path(product_id: @product),
