@@ -4,8 +4,12 @@
   <div class="col-xs-12">
     <ol class="breadcrumb">
       <%= content_tag(:li, link_to("Каталог",  store_index_path)) %>
-      <%= content_tag(:li, link_to(group_title(params[:g]), store_index_path(:g => params[:g]))) if !(params[:g] == nil) %>
-      <%= content_tag(:li, subgroup_title(params[:sg]), class: "active") if !(params[:sg] == nil) %>
+      <% if params[:g] != nil and params[:sg] == nil %>
+        <%= content_tag(:li, group_title(params[:g]), class: "active") %>
+      <% else %>
+        <%= content_tag(:li, link_to(group_title(params[:g]), store_index_path(:g => params[:g]))) if params[:g] != nil %>
+      <% end %>
+      <%= content_tag(:li, subgroup_title(params[:sg]), class: "active") if params[:sg] != nil %>
     </ol>
   </div>
 </div>
