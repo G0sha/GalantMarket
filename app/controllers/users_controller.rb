@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(:name)
+    per_page = 10
+    @inner_window = 1
+    @outer_window = 1
+    @users = User.order(:name).paginate(page: params[:page], per_page: per_page)
   end
 
   # GET /users/1
