@@ -5,27 +5,27 @@
     <div class="navbar-right-c">
       <%= link_to 'Добавить позицию', new_product_path, class: "btn btn-primary" %>
     </div>
-    <div class="clear"></div>
+    <div class="clear-r"></div>
   </div>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th width="5%">#</th>
+        <th style="text-align: center;" width="5%">#</th>
         <th width="23%">Товар</th>
         <th width="53%">Описание</th>
-        <th width="12%">Цена</th>
-        <th width="1%">Действие</th>
+        <th style="text-align: center;" width="12%">Цена</th>
+        <th style="text-align: center;" width="1%">Действие</th>
       </tr>
     </thead>
     <tbody>
 <% @products.each do |product| %>
     <tr>
-      <td><%= product.id %></td>
-      <td><%= link_to product.title, product, title: "Просмотреть" %><br><br></td>
+      <td style="text-align: center;"><%= product.id %></td>
+      <td><%= link_to product.title, product, title: "Просмотреть" %></td>
       <td><%= strip_tags(product.description).truncate(100) %></td>
-      <td><%= number_to_currency(product.price, :unit => "", :delimiter => " ", :format => "%n %u", :precision => 2) %>
+      <td style="text-align: center;"><%= number_to_currency(product.price, :unit => "", :delimiter => " ", :format => "%n %u", :precision => 2) %>
       </td>
-      <td>
+      <td style="text-align: center;">
         <%= link_to '', edit_product_path(product), class: "glyphicon glyphicon-pencil", title: "Редактировать" %> <%= link_to '', product, method: :delete, data: { confirm: 'Вы уверены?' }, class: "glyphicon glyphicon-trash", title: "Удалить" %>
       </td>
     </tr>

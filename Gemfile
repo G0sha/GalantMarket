@@ -45,6 +45,9 @@ gem 'unicorn'
 gem 'carrierwave'
 gem 'mini_magick'
 
+#russian locale
+#gem 'russian', '~> 0.6.0'
+
 #
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'

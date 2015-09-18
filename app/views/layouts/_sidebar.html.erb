@@ -7,17 +7,19 @@
 <nav id="nav" class="collapse navbar-collapse">
   <ul class="nav nav-pills nav-stacked">
     <% current_gropus.each do |g| %>
+    <% if g.show %>
     <li role="presentation" class="dropdown">
       <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><%= g.title %> <span class="caret"></span></a>
       <ul class="dropdown-menu nav nav-pills nav-stacked">
         <% current_subgropus.each do |sg| %>
-          <% if !(sg.products.where(group_id: g).count == 0) %>
+          <% if sg.products.where(group_id: g).count != 0 and sg.show %>
             <li role="presentation"><%= link_to sg.title, store_index_path(:g => g.id, :sg => sg.id) %></li>
           <% end %>
         <% end %>
         <li><%= link_to "Все", store_index_path(:g => g.id) %></li>
       </ul>
     </li>
+    <% end %>
     <% end %>
   </ul>
 </nav>

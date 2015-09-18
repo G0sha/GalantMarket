@@ -5,22 +5,30 @@
     <div class="navbar-right-c">
       <%= link_to 'Добавить подгруппу', new_subgroup_path, class: "btn btn-primary" %>
     </div>
-    <div class="clear"></div>
+    <div class="clear-r"></div>
   </div>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th width="5%">#</th>
-        <th width="94%">Группа</th>
-        <th width="1%">Действие</th>
+        <th style="text-align: center;" width="5%">#</th>
+        <th width="90%">Группа</th>
+        <th style="text-align: center;" width="4%">Меню</th>
+        <th style="text-align: center;" width="1%">Действие</th>
       </tr>
     </thead>
     <tbody>
 <% @subgroups.each do |subgroup| %>
     <tr>
-      <td><%= subgroup.id %></td>
-      <td><%= link_to subgroup.title, subgroup, title: "Просмотреть" %><br><br></td>
-      <td>
+      <td style="text-align: center;"><%= subgroup.id %></td>
+      <td><%= subgroup.title %></td>
+      <td style="text-align: center;">
+        <% if subgroup.show %>
+        Да
+        <% else %>
+        Нет
+        <% end %>
+      </td>
+      <td style="text-align: center;">
         <%= link_to '', edit_subgroup_path(subgroup), class: "glyphicon glyphicon-pencil", title: "Редактировать" %> <%= link_to '', subgroup, method: :delete, data: { confirm: 'Вы уверены?' }, class: "glyphicon glyphicon-trash", title: "Удалить" %>
       </td>
     </tr>

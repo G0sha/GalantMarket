@@ -5,22 +5,30 @@
     <div class="navbar-right-c">
       <%= link_to 'Добавить группу', new_group_path, class: "btn btn-primary" %>
     </div>
-    <div class="clear"></div>
+    <div class="clear-r"></div>
   </div>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th width="5%">#</th>
-        <th width="94%">Группа</th>
-        <th width="1%">Действие</th>
+        <th style="text-align: center;"  width="5%">#</th>
+        <th width="90%">Группа</th>
+        <th style="text-align: center;" width="4%">Меню</th>
+        <th style="text-align: center;" width="1%">Действие</th>
       </tr>
     </thead>
     <tbody>
 <% @groups.each do |group| %>
     <tr>
-      <td><%= group.id %></td>
-      <td><%= link_to group.title, group, title: "Просмотреть" %><br><br></td>
-      <td>
+      <td style="text-align: center;"><%= group.id %></td>
+      <td><%= group.title %></td>
+      <td style="text-align: center;">
+        <% if group.show %>
+        Да
+        <% else %>
+        Нет
+        <% end %>
+      </td>
+      <td style="text-align: center;">
         <%= link_to '', edit_group_path(group), class: "glyphicon glyphicon-pencil", title: "Редактировать" %> <%= link_to '', group, method: :delete, data: { confirm: 'Вы уверены?' }, class: "glyphicon glyphicon-trash", title: "Удалить" %>
       </td>
     </tr>
