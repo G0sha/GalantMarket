@@ -17,7 +17,7 @@
 
 # Игнорирование прочих ненужных файлов.
 doc/
-/public/uploads/*
+/public/uploads/
 *.swp
 *~
 .project
