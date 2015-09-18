@@ -28,12 +28,12 @@
         remote: true, class: "pull-right btn btn-success" do %>
             <span class="glyphicon glyphicon-shopping-cart"></span>
           <% end %>
-        <div class="clear"></div>
+        <div class="clear-r"></div>
       </div>
     </div>
   </div>
-  <%= content_tag(:div, '', class: "clear visible-xs visible-sm") if i % 2 == 0 %>
-  <%= content_tag(:div, '', class: "clear visible-md visible-lg") if i % 3 == 0 %>
+  <%= content_tag(:div, '', class: "clear-l visible-xs visible-sm") if i % 2 == 0 %>
+  <%= content_tag(:div, '', class: "clear-l visible-md visible-lg") if i % 3 == 0 %>
   <% end %>
 </div>
 

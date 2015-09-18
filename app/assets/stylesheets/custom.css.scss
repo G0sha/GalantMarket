@@ -4,6 +4,14 @@ body{
   background-color: #ebebeb !important;
 }
 
+aside{
+  display: block;
+}
+
+header{
+  display: block;
+}
+
 .navbar-c {
   margin-bottom: 0px;
   border-radius: 0px;
@@ -316,7 +324,10 @@ a {
   padding: 0px;
 }
 
-.clear{
+.clear-l{
   clear: left;
+}
+
+.clear-r{
   clear: right;
 }
