@@ -19,7 +19,11 @@
     </thead>
     <tbody>
 <% @products.each do |product| %>
+    <% if correct_source(product) %>
+    <tr class="danger" >
+    <% else %>
     <tr>
+    <% end %>
       <td style="text-align: center;"><%= product.id %></td>
       <td><%= link_to product.title, product, title: "Просмотреть" %></td>
       <td><%= strip_tags(product.description).truncate(100) %></td>

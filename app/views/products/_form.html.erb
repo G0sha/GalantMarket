@@ -20,23 +20,11 @@
   </div>
   <div class="field">
     <%= f.label "Категория" %><br>
-    <% if @product.group_id? %>
-    <%= f.select(:group_id,
-      options_for_select([[group_title(@product.group_id),@product.group_id]] + current_gropus_select)) %>
-    <% else %>
-    <%= f.select(:group_id,
-      options_for_select([['---------------','0']] + current_gropus_select)) %>
-    <% end %>
+    <%= f.select(:group_id, current_group_to_product(@product.group_id)) %>
   </div>
   <div class="field">
     <%= f.label "Подкатегория" %><br>
-    <% if @product.subgroup_id? %>
-    <%= f.select(:subgroup_id,
-      options_for_select([[subgroup_title(@product.subgroup_id),@product.subgroup_id]] + current_subgropus_select)) %>
-    <% else %>
-    <%= f.select(:subgroup_id,
-      options_for_select([['---------------','0']] + current_subgropus_select)) %>
-    <% end %>
+    <%= f.select(:subgroup_id, current_subgroup_to_product(@product.subgroup_id)) %>
   </div>
   <div class="field">
     <%= f.label "Описание товара" %><br>
