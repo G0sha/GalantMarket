@@ -38,8 +38,8 @@
           <li <%= "class=active" if params[:controller] == 'store' %>>
             <%= link_to "Каталог",  store_index_path, title: 'Каталог' %>
           </li>
-          <li>
-            <%= link_to "Услуги",   "#" , title: 'Услуги' %>
+          <li <%= "class=active" if params[:controller] == 'store_service' %>>
+            <%= link_to "Услуги",   store_service_index_path , title: 'Услуги' %>
           </li>
           <li>
             <%= link_to "Контакты", "#" , title: 'Контакты' %>
@@ -61,6 +61,7 @@
                 <li><%= link_to "Новости", new_page_messeg_path, title: 'Новости' %></li>
                 <li class="divider"></li>
                 <li><%= link_to "Продукция",  products_path, title: 'Продукция' %></li>
+                <li><%= link_to "Услуги",  services_path, title: 'Услуги' %></li>
                 <li><%= link_to "Категории товаров",   groups_path, title: 'Категории товаров' %></li>
                 <li><%= link_to "Подкатегории товаров",  subgroups_path, title: 'Подкатегории товаров' %></li>
                 <li class="divider"></li>

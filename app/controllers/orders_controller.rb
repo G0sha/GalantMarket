@@ -18,8 +18,18 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    if @cart.line_services.empty? and @cart.line_items.empty?
+      redirect_to store_service_index_url, notice: "Ваша корзина пуста"
+      return
+    end
+
+    if @cart.line_services.empty?
+      redirect_to store_service_index_url, notice: "Вы не выбрали услуги"
+      return
+    end
+
     if @cart.line_items.empty?
-      redirect_to store_index_url, notice: "Ваша корзина пуста"
+      redirect_to store_index_url, notice: "Вы не выбрали продукцию"
       return
     end
 
@@ -35,6 +45,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
+    @order.add_line_services_from_cart(@cart)
 
     respond_to do |format|
       if @order.save

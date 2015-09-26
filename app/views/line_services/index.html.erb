@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Line Services</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Cart</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @line_services.each do |line_service| %>
+      <tr>
+        <td><%= line_service.service %></td>
+        <td><%= line_service.cart %></td>
+        <td><%= link_to 'Show', line_service %></td>
+        <td><%= link_to 'Edit', edit_line_service_path(line_service) %></td>
+        <td><%= link_to 'Destroy', line_service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Line service', new_line_service_path %>

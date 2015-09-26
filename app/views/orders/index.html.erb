@@ -20,6 +20,9 @@
         <% order.line_items.each do |item| %>
                 <%= item.quantity %> x <%= item.product.title %> = <%= item.total_price %><br>
         <% end %>
+        <% order.line_services.each do |item| %>
+                <%= item.quantity %> x <%= item.service.title %> = <%= item.total_price %><br>
+        <% end %>
       </dd>
       <dt>Сумма:</dt>
       <dd>

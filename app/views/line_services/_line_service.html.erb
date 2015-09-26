@@ -1,0 +1,9 @@
+<% if line_service == @current_service %>
+  <tr id="current_service">
+<% else %>
+  <tr>
+<% end %>
+    <td><%= line_service.quantity %>&times;</td>
+    <td><%= line_service.service.title %></td>
+    <td class="item_price"><%= number_to_currency(line_service.total_price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></td>
+</tr>

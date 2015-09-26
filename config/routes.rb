@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # get 'store_service/index'
+
+  # get 'store_service/show'
+
+  resources :services
   resources :subgroups
   resources :groups
   root 'page_messegs#index'
@@ -17,9 +22,11 @@ Rails.application.routes.draw do
   resources :page_messegs
   resources :orders
   resources :line_items
+  resources :line_services
   resources :carts
   resources :products
   resources :store
+  resources :store_service
 
   get 'store', to:  'store#index'
 

@@ -4,7 +4,7 @@ class SubgroupsController < ApplicationController
   # GET /subgroups
   # GET /subgroups.json
   def index
-    per_page = 10
+    per_page = 20
     @inner_window = 1
     @outer_window = 1
     @subgroups = Subgroup.all.paginate(page: params[:page], per_page: per_page)
@@ -31,7 +31,7 @@ class SubgroupsController < ApplicationController
 
     respond_to do |format|
       if @subgroup.save
-        format.html { redirect_to @subgroup, notice: 'Subgroup was successfully created.' }
+        format.html { redirect_to subgroup_path, notice: 'Подгруппа добавлена' }
         format.json { render :show, status: :created, location: @subgroup }
       else
         format.html { render :new }

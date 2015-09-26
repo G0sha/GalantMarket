@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    per_page = 10
+    per_page = 20
     @inner_window = 1
     @outer_window = 1
     @groups = Group.all.paginate(page: params[:page], per_page: per_page)
@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+        format.html { redirect_to group_path, notice: 'Группа добавлена' }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new }

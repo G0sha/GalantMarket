@@ -1,0 +1,35 @@
+<% provide(:title, 'Услуги') %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Каталог услуг
+    <div class="navbar-right-c">
+      <%= link_to 'Добавить позицию', new_service_path, class: "btn btn-primary" %>
+    </div>
+    <div class="clear-r"></div>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th style="text-align: center;" width="5%">#</th>
+        <th width="23%">Услуга</th>
+        <th width="53%">Описание</th>
+        <th style="text-align: center;" width="12%">Цена</th>
+        <th style="text-align: center;" width="1%">Действие</th>
+      </tr>
+    </thead>
+    <tbody>
+<% @services.each do |service| %>
+      <td style="text-align: center;"><%= service.id %></td>
+      <td><%= service.title %></td>
+      <td><%= strip_tags(service.description).truncate(100) %></td>
+      <td style="text-align: center;"><%= number_to_currency(service.price, :unit => "", :delimiter => " ", :format => "%n %u", :precision => 2) %>
+      </td>
+      <td style="text-align: center;">
+        <%= link_to '', edit_service_path(service), class: "glyphicon glyphicon-pencil", title: "Редактировать" %> <%= link_to '', service, method: :delete, data: { confirm: 'Вы уверены?' }, class: "glyphicon glyphicon-trash", title: "Удалить" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+  </table>
+</div>
+<%= will_paginate @services, class: "pagginate-top", previous_label: "Назад", next_label: "Вперед", inner_window: @inner_window, outer_window: @outer_window %>

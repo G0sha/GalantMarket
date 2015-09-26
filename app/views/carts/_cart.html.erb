@@ -2,7 +2,7 @@
 
   <table class="table table-hover">
     <%= render(cart.line_items) %>
-
+    <%= render(cart.line_services) %>
     <tr class="total_line">
       <td colspan="2">Сумма</td>
       <td class="total_cell"><%= number_to_currency(cart.total_price, :unit => "руб.", :delimiter => " ", :format => "%n %u", :precision => 2) %></td>
