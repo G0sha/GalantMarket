@@ -1,0 +1,4 @@
+<div id="info">
+  <h2><%= @info.title %></h2>
+  <%= sanitize(@info.description.gsub("$IMAGE$", "<img src='#{@info.info_img.medium.url}'><br>").gsub(">\r\n", ">").gsub("\r\n", "<br>"), tags: %w(br h1 h2 h3 h4 h5 img b)) %>
+</div>

@@ -21,4 +21,8 @@ module ApplicationHelper
   def form_user_text(str)
     sanitize(str.gsub("\r\n", "<br>"), tags: %w(br))
   end
+
+  def index_info_list
+    Info.order(:created_at)
+  end
 end

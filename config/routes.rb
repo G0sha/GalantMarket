@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  # get 'store_service/index'
-
-  # get 'store_service/show'
-
-  resources :services
-  resources :subgroups
-  resources :groups
   root 'page_messegs#index'
 
   get 'admin' => 'admin#index'
@@ -15,9 +8,11 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
- # get 'sessions/create'
- # get 'sessions/destroy'
 
+  resources :infos
+  resources :services
+  resources :subgroups
+  resources :groups
   resources :users
   resources :page_messegs
   resources :orders

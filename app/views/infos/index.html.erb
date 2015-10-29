@@ -1,0 +1,33 @@
+<% provide(:title, 'Инфо страницы') %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Инфо страницы
+    <div class="navbar-right-c">
+      <%= link_to 'Добавить страницу', new_info_path, class: "btn btn-primary" %>
+    </div>
+    <div class="clear-r"></div>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th style="text-align: center;" width="5%">#</th>
+        <th width="14%">Страница</th>
+        <th width="85%">Описание</th>
+        <th style="text-align: center;" width="1%">Действие</th>
+      </tr>
+    </thead>
+    <tbody>
+<% @infos.each do |info| %>
+    <tr>
+      <td style="text-align: center;"><%= info.id %></td>
+      <td><%= link_to info.title, info, title: "Просмотреть" %></td>
+      <td><%= strip_tags(info.description).truncate(100) %></td>
+      <td style="text-align: center;">
+        <%= link_to '', edit_info_path(info), class: "glyphicon glyphicon-pencil", title: "Редактировать" %> <%= link_to '', info, method: :delete, data: { confirm: 'Вы уверены?' }, class: "glyphicon glyphicon-trash", title: "Удалить" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+  </table>
+</div>
+<%= will_paginate @infos, class: "pagginate-top", previous_label: "Назад", next_label: "Вперед", inner_window: @inner_window, outer_window: @outer_window %>

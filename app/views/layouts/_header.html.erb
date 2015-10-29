@@ -41,12 +41,11 @@
           <li <%= "class=active" if params[:controller] == 'store_service' %>>
             <%= link_to "Услуги",   store_service_index_path , title: 'Услуги' %>
           </li>
+          <% index_info_list.each do |info| %>
           <li>
-            <%= link_to "Контакты", "#" , title: 'Контакты' %>
+            <%= link_to info.title, info, title: info.title %>
           </li>
-          <li>
-            <%= link_to "О нас",    "#" , title: 'О нас' %>
-          </li>
+          <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if session[:user_id] %>
@@ -59,6 +58,7 @@
                 <li><%= link_to "Заказы",  orders_path, title: 'Заказы' %></li>
                 <li><%= link_to "Пользователи", users_path, title: 'Пользователи' %></li>
                 <li><%= link_to "Новости", new_page_messeg_path, title: 'Новости' %></li>
+                <li><%= link_to "Инфо страницы", infos_path, title: 'Инфо страницы' %></li>
                 <li class="divider"></li>
                 <li><%= link_to "Продукция",  products_path, title: 'Продукция' %></li>
                 <li><%= link_to "Услуги",  services_path, title: 'Услуги' %></li>
