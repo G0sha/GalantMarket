@@ -14,11 +14,13 @@ class LineServicesController < ApplicationController
   # GET /line_services/1
   # GET /line_services/1.json
   def show
+    p "S ssssssssssssssssssssss1"
   end
 
   # GET /line_services/new
   def new
     @line_service = LineService.new
+    p "S ssssssssssssssssssssss"
   end
 
   # GET /line_services/1/edit
@@ -28,15 +30,17 @@ class LineServicesController < ApplicationController
   # POST /line_services
   # POST /line_services.json
   def create
-    service = Service.find(params[:service_id])
+    service = Service.find(1)
     @line_service = @cart.add_service(service.id)
-
+    p "S 11111111111111111111"
     respond_to do |format|
       if @line_service.save
+        p "S 2222222222222222222222"
         format.html { redirect_to store_service_url}
         format.js { @current_service = @line_service }
         format.json { render :show, status: :created, location: @line_service }
       else
+        p "S 333333333333333333"
         format.html { render :new }
         format.json { render json: @line_service.errors, status: :unprocessable_entity }
       end

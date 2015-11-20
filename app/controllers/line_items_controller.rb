@@ -30,15 +30,32 @@ class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id)
+    if product.service_id != 0 and product.service_id != nil
+      service = Service.find(product.service_id)
+      @line_service = @cart.add_service(service.id)
+    end
 
     respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to store_url}
-        format.js { @current_item = @line_item }
-        format.json { render :show, status: :created, location: @line_item }
+      if product.service_id != 0 and product.service_id != nil
+        if @line_item.save and @line_service.save
+          format.html { redirect_to store_url }
+          format.js { @current_item = @line_item }
+          format.js { @current_service = @line_service }
+          format.json { render :show, status: :created, location: @line_service }
+          format.json { render :show, status: :created, location: @line_item }
+        else
+          format.html { render :new }
+          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        if @line_item.save
+          format.html { redirect_to store_url }
+          format.js { @current_item = @line_item }
+          format.json { render :show, status: :created, location: @line_item }
+        else
+          format.html { render :new }
+          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

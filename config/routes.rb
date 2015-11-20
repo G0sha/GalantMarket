@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   resources :carts
   resources :products
   resources :store
-  resources :store_service
 
   get 'store', to:  'store#index'
 

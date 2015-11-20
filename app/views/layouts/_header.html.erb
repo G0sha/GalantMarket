@@ -38,11 +38,8 @@
           <li <%= "class=active" if params[:controller] == 'store' %>>
             <%= link_to "Каталог",  store_index_path, title: 'Каталог' %>
           </li>
-          <li <%= "class=active" if params[:controller] == 'store_service' %>>
-            <%= link_to "Услуги",   store_service_index_path , title: 'Услуги' %>
-          </li>
           <% index_info_list.each do |info| %>
-          <li>
+          <li <%= "class=active" if params[:id] == info.id.to_s %>>
             <%= link_to info.title, info, title: info.title %>
           </li>
           <% end %>

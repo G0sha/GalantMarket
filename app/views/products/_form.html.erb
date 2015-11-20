@@ -34,6 +34,10 @@
     <%= f.label "Цена" %><br>
     <%= f.text_field :price %>
   </div>
+  <div class="field">
+    <%= f.label "Доп услуга" %><br>
+    <%= f.select(:service_id, current_services_to_product(@product.service_id)) %>
+  </div>
 
   <div class="field">
     <%= f.label "Изображение товара" %><br>

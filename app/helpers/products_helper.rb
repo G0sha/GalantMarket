@@ -27,9 +27,14 @@ module ProductsHelper
     end
   end
 
+  def current_services_to_product(id)
+    return [['---------------','0']] + current_services_select
+  end
+
   def correct_source(product)
     return true if (Subgroup.find_by id: product.subgroup_id) == nil
     return true if (Group.find_by id: product.group_id) == nil
+    return true if (product.service_id == nil)
     return false
   end
 end
