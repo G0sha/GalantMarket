@@ -1,0 +1,60 @@
+<%= form_for(@solution) do |f| %>
+<% if @solution.errors.any? %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      The form contains <%= pluralize(@solution.errors.count, "error") %>.
+    </div>
+    <div class="panel-body" >
+      <ul class="list-unstyled">
+        <% @solution.errors.full_messages.each do |msg| %>
+          <li class="text-danger"><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label "Название" %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label "Описание" %><br>
+    <%= f.text_area :description %>
+  </div>
+  <table class="table table-condensed field">
+  <thead>
+    <tr>
+      <th width="27%"></th>
+      <th style="text-align: center;" width="63%"><%= label_tag("Артикул оборудования") %></th>
+      <th style="text-align: center;" width="10%"><%= label_tag("Кол-во") %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% 1.upto(5) do |i| %>
+  <tr>
+    <td style="text-align: center;"><%= label_tag(:"item-#{i}", "Оборудование #{i}") %></td>
+    <td><%= text_field_tag :"item-#{i}" %></td>
+    <td><%= text_field_tag :"item-#{i}-count" %></td>
+  </tr>
+  <% end %>
+  </tbody>
+  </table>
+  <div class="field">
+    <%= f.label 'Доп стоимость' %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label "Изображение" %><br>
+    <%= f.text_field :sol_img %>
+  </div>
+  <div class="field">
+    <%= f.label "Изображение" %><br>
+    <%= image_tag(@solution.sol_img.small.url) if @solution.sol_img? %>
+    <%= f.file_field :sol_img %>
+    <%= f.hidden_field :sol_img_cache %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

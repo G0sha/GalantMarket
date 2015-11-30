@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  root 'page_messegs#index'
+  get 'store_solutions/index'
+
+  get 'store_solutions/view'
+
+  resources :line_solutions_items
+  resources :solutions
+  root 'store_solutions#index'
 
   get 'admin' => 'admin#index'
   controller :sessions do
@@ -21,6 +27,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :products
   resources :store
+  resources :store_solutions
 
   get 'store', to:  'store#index'
 

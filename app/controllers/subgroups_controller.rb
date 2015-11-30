@@ -31,7 +31,7 @@ class SubgroupsController < ApplicationController
 
     respond_to do |format|
       if @subgroup.save
-        format.html { redirect_to subgroup_path, notice: 'Подгруппа добавлена' }
+        format.html { redirect_to subgroups_path, notice: 'Подгруппа добавлена' }
         format.json { render :show, status: :created, location: @subgroup }
       else
         format.html { render :new }

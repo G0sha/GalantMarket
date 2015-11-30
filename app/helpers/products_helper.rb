@@ -28,7 +28,7 @@ module ProductsHelper
   end
 
   def current_services_to_product(id)
-    return [['---------------','0']] + current_services_select
+    return [['Нет','0']] + current_services_select
   end
 
   def correct_source(product)

@@ -9,7 +9,6 @@ class InfosController < ApplicationController
     @inner_window = 1
     @outer_window = 1
     @infos = Info.order('created_at').paginate(page: params[:page], per_page: per_page)
-
   end
 
   # GET /infos/1

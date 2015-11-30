@@ -4,8 +4,8 @@ module GroupsHelper
     g.title
   end
 
-  def current_gropus # возвращает массив всех Групп
-    @current_gropus = Group.all
+  def current_gropus # возвращает массив всех Группc
+    @current_gropus = Group.all.order(:title) # сортируем по названию
   end
 
   def current_gropus_select # создает список Групп для select_tag

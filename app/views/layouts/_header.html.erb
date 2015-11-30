@@ -39,7 +39,7 @@
             <%= link_to "Каталог",  store_index_path, title: 'Каталог' %>
           </li>
           <% index_info_list.each do |info| %>
-          <li <%= "class=active" if params[:id] == info.id.to_s %>>
+          <li <%= "class=active" if params[:controller] == 'infos' and params[:id] == info.id.to_s %>>
             <%= link_to info.title, info, title: info.title %>
           </li>
           <% end %>
@@ -59,6 +59,7 @@
                 <li class="divider"></li>
                 <li><%= link_to "Продукция",  products_path, title: 'Продукция' %></li>
                 <li><%= link_to "Услуги",  services_path, title: 'Услуги' %></li>
+                <li><%= link_to "Наборы",  solutions_path, title: 'Наборы' %></li>
                 <li><%= link_to "Категории товаров",   groups_path, title: 'Категории товаров' %></li>
                 <li><%= link_to "Подкатегории товаров",  subgroups_path, title: 'Подкатегории товаров' %></li>
                 <li class="divider"></li>

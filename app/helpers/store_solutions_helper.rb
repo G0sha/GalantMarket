@@ -1,0 +1,2 @@
+module StoreSolutionsHelper
+end

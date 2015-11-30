@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118193512) do
+ActiveRecord::Schema.define(version: 20151130140132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,13 +62,16 @@ ActiveRecord::Schema.define(version: 20151118193512) do
   add_index "line_services", ["order_id"], name: "index_line_services_on_order_id", using: :btree
   add_index "line_services", ["service_id"], name: "index_line_services_on_service_id", using: :btree
 
-  create_table "news", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "cover"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "line_solutions_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "solution_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "quantity",    default: 1
   end
+
+  add_index "line_solutions_items", ["product_id"], name: "index_line_solutions_items_on_product_id", using: :btree
+  add_index "line_solutions_items", ["solution_id"], name: "index_line_solutions_items_on_solution_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.string   "name"
@@ -81,14 +84,6 @@ ActiveRecord::Schema.define(version: 20151118193512) do
   end
 
   create_table "page_messegs", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "cover"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "page_news", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.string   "cover"
@@ -118,6 +113,15 @@ ActiveRecord::Schema.define(version: 20151118193512) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "solutions", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.decimal  "price"
+    t.string   "sol_img"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "subgroups", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -138,4 +142,6 @@ ActiveRecord::Schema.define(version: 20151118193512) do
   add_foreign_key "line_services", "carts"
   add_foreign_key "line_services", "orders"
   add_foreign_key "line_services", "services"
+  add_foreign_key "line_solutions_items", "products"
+  add_foreign_key "line_solutions_items", "solutions"
 end

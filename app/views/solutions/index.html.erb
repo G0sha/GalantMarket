@@ -1,0 +1,36 @@
+<% provide(:title, 'Наборы') %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Каталог наборов
+    <div class="navbar-right-c">
+      <%= link_to 'Добавить позицию', new_solution_path, class: "btn btn-primary" %>
+    </div>
+    <div class="clear-r"></div>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th style="text-align: center;" width="5%">#</th>
+        <th width="23%">Товар</th>
+        <th width="53%">Описание</th>
+        <th style="text-align: center;" width="12%">Цена</th>
+        <th style="text-align: center;" width="1%">Действие</th>
+      </tr>
+    </thead>
+    <tbody>
+<% @solutions.each do |solution| %>
+    <tr>
+      <td style="text-align: center;"><%= solution.id %></td>
+      <td><%= link_to solution.title, solution, title: "Просмотреть" %></td>
+      <td><%= strip_tags(solution.description).truncate(100) %></td>
+      <td style="text-align: center;"><%= number_to_currency(solution.price, :unit => "", :delimiter => " ", :format => "%n %u", :precision => 2) %>
+      </td>
+      <td style="text-align: center;">
+        <%= link_to '', edit_solution_path(solution), class: "glyphicon glyphicon-pencil", title: "Редактировать" %> <%= link_to '', solution, method: :delete, data: { confirm: 'Вы уверены?' }, class: "glyphicon glyphicon-trash", title: "Удалить" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+  </table>
+</div>
+<%= will_paginate @products, class: "pagginate-top", previous_label: "Назад", next_label: "Вперед", inner_window: @inner_window, outer_window: @outer_window %>

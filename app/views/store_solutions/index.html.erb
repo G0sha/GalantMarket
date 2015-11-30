@@ -1,0 +1,32 @@
+<% provide(:title, 'Комплекты видеонаблюдения') %>
+
+<div class="row">
+  <% i = 0 %>
+  <% @solutions.each do |solution| %>
+  <% i+= 1 %>
+  <% @l = solution.line_solutions_items.all %>
+  <div class="col-xs-6 col-md-4">
+    <div class="thumbnail thumbnail-store">
+      <%= link_to image_tag(solution.sol_img.medium.url, class: "store-img"), store_path(solution.id) if solution.sol_img? %>
+      <div class="caption">
+        <h4><%= link_to solution.title, store_solution_path(solution.id) %></h4>
+        <strong>Комплектация:</strong>
+        <% @l.each do |item| %>
+          <p><%= item.product.title.to_s + ' x' + item.quantity.to_s %></p>
+        <% end %>
+        <h4 class="pull-left text-success"><%= number_to_currency(solution.price + price_summ(@l), :unit => "", :delimiter => " ", :format => "%n %u", :precision => 0) %> <span class="glyphicon glyphicon-ruble"></span></h4>
+          <%= button_to '',
+        remote: true, class: "pull-right btn btn-success" do %>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+          <% end %>
+        <div class="clear-r"></div>
+      </div>
+    </div>
+  </div>
+  <%= content_tag(:div, '', class: "clear-l visible-xs visible-sm") if i % 2 == 0 %>
+  <%= content_tag(:div, '', class: "clear-l visible-md visible-lg") if i % 3 == 0 %>
+  <% end %>
+</div>
+
+<%= will_paginate @solutions, class: "pagginate-top", previous_label: "<<", next_label: ">>", inner_window: @inner_window, outer_window: @outer_window %>
+<div class="pagginate-bottom"><%= page_entries_info @solutions %></div>

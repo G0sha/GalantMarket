@@ -30,6 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
   gem 'capistrano-rails'
+  gem 'faker'
 end
 
 # Use ActiveModel has_secure_password
