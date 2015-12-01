@@ -46,10 +46,6 @@
   </div>
   <div class="field">
     <%= f.label "Изображение" %><br>
-    <%= f.text_field :sol_img %>
-  </div>
-  <div class="field">
-    <%= f.label "Изображение" %><br>
     <%= image_tag(@solution.sol_img.small.url) if @solution.sol_img? %>
     <%= f.file_field :sol_img %>
     <%= f.hidden_field :sol_img_cache %>
