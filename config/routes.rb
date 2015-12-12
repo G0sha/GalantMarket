@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :search_engiens
   get 'store_solutions/index'
 
   get 'store_solutions/view'

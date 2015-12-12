@@ -19,15 +19,9 @@
   </div>
   <div class="caption">
     <ul class="list-inline">
-      <li>
-        <%= link_to "Назад", "#", onclick: "history.back()", class: "btn btn-warning" %>
-      </li>
-      <li>
-        <%= link_to 'Редактировать', edit_solution_path(@solution), class: "btn btn-success" %>
-      </li>
-      <li>
-        <%= link_to 'Удалить', solution_path, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger" %>
-      </li>
+      <li><%= button_to 'В корзину', "#",
+        remote: true, class: "btn btn-success" %></li>
+      <li><%= link_to "Назад", store_index_path, class: "btn btn-warning" %></li>
     </ul>
   </div>
 </div>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @search_engien.title %>
+</p>
+
+<p>
+  <strong>Head:</strong>
+  <%= @search_engien.head %>
+</p>
+
+<p>
+  <strong>Footer:</strong>
+  <%= @search_engien.footer %>
+</p>
+
+<%= link_to 'Edit', edit_search_engien_path(@search_engien) %> |
+<%= link_to 'Back', search_engiens_path %>

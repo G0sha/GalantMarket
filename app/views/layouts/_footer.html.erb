@@ -13,6 +13,10 @@
             ООО "Галант": Системы видеонаблюдения, цифровые видеорегистраторы, внутренние и уличные камеры видеонаблюдения. Комплексные системы безопасности.<br>
             Тел: 8(985)884-81-82, email: ooo.galant-security@yandex.ru<br>
           </h5>
+          <% @search_engiens = SearchEngien.all %>
+          <% @search_engiens.each do |se| %>
+            <%= render  html: se.footer.html_safe %>
+          <% end %>
         </div>
       </div>
     </footer>
